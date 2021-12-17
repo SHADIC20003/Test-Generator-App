@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
  
 public class Testmain {
-	 private static final String filepath="C:\\Users\\ahmed alaa\\Desktop\\project\\inputtest.txt";
+	 private static final String filepath="inputtest.txt";
 	 //remember to change the path and just leave the name 
 	 
 	public static void main(String[] args) {
@@ -19,10 +19,10 @@ public class Testmain {
 			int x=input.nextInt();
 			ArrayList<Question> questions = new ArrayList<>();
 		if(x==1) {
-			//Testmain objectIO = new Testmain();
+		
 				System.out.println("how many questions will you enter");
 				int numOfQuestions=input.nextInt();
-			//	Index_Counter index = new Index_Counter(numOfQuestions);
+			
 				fillArrayList_TestBank( questions,numOfQuestions);
 				  
 				
@@ -60,74 +60,7 @@ public class Testmain {
 	}//scanner of main
 	}//main function
 
-	/*public static void fillArrayList_ExamQuestions( ) {
-		 
-			try (Scanner input = new Scanner(System.in)) {
-				String question;
-				String answer;
-				try{
-    					FileInputStream readData = new FileInputStream("peopledata.ser");
-    					ObjectInputStream readStream = new ObjectInputStream(readData);
-
-    					ArrayList<Question> people2 = (ArrayList<Question>) readStream.readObject();
-    					
-    					readStream.close();
-    				
-    					System.out.println(people2.toString());
-    					
-    				
-						}catch (Exception e) {
-    						e.printStackTrace();
-
-							}
-			}//scanner of function fill array
-		}//function fill array
-		
 	
-	/*public static void fillArrayList_TestBank(Index_Counter index, ArrayList<Question> questions,int num_of_question) {
-		try (Scanner input = new Scanner(System.in)) {
-			
-			String question;
-			String answer;
-			try {
-				
-				BufferedWriter bw = new BufferedWriter(
-						new FileWriter("C:\\Users\\ahmed alaa\\Desktop\\project\\test bank inputfile.txt"));
-				//for (int i = (index.getCounter()-index.getnumber_of_questions_entered()); i <index.getCounter(); i++){
-					for(int i=0;i<num_of_question;i++) {
-					
-						System.out.println("type the question "+(i+1));
-					System.out.println("press enter to type the answer");
-					
-					//question= "question "+i; 
-				   
-					//question.concat(input.nextLine());
-					question=input.nextLine();
-					bw.write(question);
-					
-					System.out.println("enter the answer of the question "+(i+1));
-					
-					//answer="answer %d "+i; 
-				 
-					//answer.concat(input.nextLine());
-					answer=input.nextLine();
-					bw.write("\n"+answer);
-					
-					bw.close();					
-					
-					//then read till != that keyword  
-					questions.add(i, new Question(question, answer));
-					
-				}//for loop
-			}catch(Exception ex) {
-				return;
-			}//catch
-
-		}//scanner of function fill array
-	}//function fill array
-	
-}//class*/
-
 
 public static void fillArrayList_TestBank( ArrayList<Question> questions,int num_of_question) {
 try (Scanner input = new Scanner(System.in)) {
@@ -135,15 +68,12 @@ try (Scanner input = new Scanner(System.in)) {
 	String question;
 	String answer;
 	
-		//for (int i = (index.getCounter()-index.getnumber_of_questions_entered()); i <index.getCounter(); i++){
+	
 			for(int i=0;i<num_of_question;i++) {
 			
 				System.out.println("type the question "+(i+1));
 			System.out.println("press enter to type the answer");
 			
-			//question= "question "+i; 
-		   
-			//question.concat(input.nextLine());
 			question=input.nextLine();
 			question.trim();
 			System.out.println("enter the answer of the question "+(i+1));
@@ -153,9 +83,9 @@ try (Scanner input = new Scanner(System.in)) {
 			answer=input.nextLine();
 			answer.trim();
 			
-			//then read till != that keyword  
+			
 			questions.add(i, new Question(question, answer));
-			//objectIO.WriteObjectToFile(question.indent(i));
+			
 			
 		}//for loop
 	
@@ -195,20 +125,5 @@ public static void Exam(String filepath) {
 
 }
 
-/*public void WriteObjectToFile(Object serObj) {
-	 
-    try {
 
-    	FileOutputStream writeData = new FileOutputStream("peopledata.ser");
-        ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
-
-        writeStream.writeObject(serObj);
-        writeStream.flush();
-        writeStream.close()
-
-    } catch (Exception ex) {
-       
-    }
-
-}*/
 }
