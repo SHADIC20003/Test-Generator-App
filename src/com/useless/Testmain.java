@@ -26,7 +26,7 @@ public class Testmain {
 				fillArrayList_TestBank( questions,numOfQuestions);
 				  
 				
-				try{
+				/*try{
 				    FileOutputStream writeData = new FileOutputStream(filepath);
 				    ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
@@ -37,7 +37,7 @@ public class Testmain {
 				}catch (IOException e1) {
 				    e1.printStackTrace();
 
-				}
+				}*/
 				
 				
 				/*System.out.println("enter 0 if you want to take a test");
@@ -45,6 +45,20 @@ public class Testmain {
 				
 				if(y==0) 
 					Exam(filepath);*/
+try {
+					
+					BufferedWriter bw = new BufferedWriter(
+							new FileWriter(filepath));
+					
+					
+						bw.append((CharSequence) questions);
+						
+						bw.close();					
+						
+				}catch(Exception ex) {
+					return;
+				}//catch
+			}
 				
 				
 			}
