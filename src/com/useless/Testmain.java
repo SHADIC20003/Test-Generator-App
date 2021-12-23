@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
  
 class Main{
 	 private static final String filepath="inputTest.txt";
+	 private static final String filepath2="stats.txt";
 	 //remember to change the path and just leave the name 
 	 
 	public static void main(String[] args) {
