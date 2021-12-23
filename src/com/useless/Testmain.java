@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
  
 class Main{
-	 private static final String filepath="inputtest.txt";
+	 private static final String filepath="inputTest.txt";
 	 //remember to change the path and just leave the name 
 	 
 	public static void main(String[] args) {
