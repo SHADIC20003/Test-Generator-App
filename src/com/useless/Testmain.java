@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
  
-public class Testmain {
+class Main{
 	 private static final String filepath="inputtest.txt";
 	 //remember to change the path and just leave the name 
 	 
@@ -19,33 +19,33 @@ public class Testmain {
 			int x=input.nextInt();
 			ArrayList<Question> questions = new ArrayList<>();
 		if(x==1) {
-		
-				System.out.println("how many questions will you enter");
-				int numOfQuestions=input.nextInt();
-			
-				fillArrayList_TestBank( questions,numOfQuestions);
-				  
-				
-				/*try{
-				    FileOutputStream writeData = new FileOutputStream(filepath);
-				    ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
-				    writeStream.writeObject(questions);
-				    writeStream.flush();
-				    writeStream.close();
+			System.out.println("how many questions will you enter");
+			int numOfQuestions = input.nextInt();
 
-				}catch (IOException e1) {
-				    e1.printStackTrace();
+			fillArrayList_TestBank(questions, numOfQuestions);
 
-				}*/
-				
-				
+
+			try {
+				FileOutputStream writeData = new FileOutputStream(filepath);
+				ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+
+				writeStream.writeObject(questions);
+				writeStream.flush();
+				writeStream.close();
+
+			} catch (IOException e1) {
+				e1.printStackTrace();
+
+			}
+
+		}
 				/*System.out.println("enter 0 if you want to take a test");
 				int y=input.nextInt();
 				
 				if(y==0) 
 					Exam(filepath);*/
-try {
+/*try {
 					
 					BufferedWriter bw = new BufferedWriter(
 							new FileWriter(filepath));
@@ -61,7 +61,7 @@ try {
 			}
 				
 				
-			}
+			}*/
 										
 		else if (x==2)  
 					Exam(filepath);
