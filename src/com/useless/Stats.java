@@ -4,12 +4,20 @@ public class Stats {
     private double TotalTime;
     private int numberOfFails;
     private int numberOfPasses;
+    private int numberOfQuestions;
+
 
     Stats(){
 
     }
 
+    public int getNumberOfQuestions() {
+        return numberOfQuestions;
+    }
 
+    public void setNumberOfQuestions(int numberOfQuestions) {
+        this.numberOfQuestions = numberOfQuestions;
+    }
 
     public int getTestCounter() {
         return testCounter;
