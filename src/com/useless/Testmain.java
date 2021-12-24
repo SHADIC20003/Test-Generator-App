@@ -198,8 +198,8 @@ try (Scanner input = new Scanner(System.in)) {
 				   
 				    bw.close();
 
-				}catch (IOException e1) {
-				    e1.printStackTrace();
+				}catch (Exception e1) {
+					return ;
 
 				}
 			try{
@@ -213,8 +213,8 @@ try (Scanner input = new Scanner(System.in)) {
 				   
 				    bw.close();
 
-				}catch (IOException e1) {
-				    e1.printStackTrace();
+				}catch (Exception e1) {
+					return ;
 
 				}
 				
@@ -280,8 +280,8 @@ try{
 	    
 	  }
 	br.close();
-}catch (IOException e1) {
-	    e1.printStackTrace();
+}catch (Exception e1) {
+	return ;
 
 	}
 try{
@@ -292,8 +292,8 @@ for(int i=0;i<10;i++) {
 	 answersRead.add(i,br.readLine());
   }
 br.close();
-}catch (IOException e1) {
-    e1.printStackTrace();
+}catch (Exception e1) {
+   return ;
 
 }
 
