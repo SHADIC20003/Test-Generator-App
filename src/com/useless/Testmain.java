@@ -164,8 +164,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Testmain {
-	 private static final String filepathquestions="questions.txt";
-	 private static final String filepathanswers="answers.txt";
+	 private static final String filepathquestions="C:\\Users\\ahmed alaa\\Desktop\\project\\questions.txt";
+	 private static final String filepathanswers="C:\\Users\\ahmed alaa\\Desktop\\project\\answers.txt";
 	
 	public static void main(String[] args) {
 		
@@ -192,7 +192,9 @@ try (Scanner input = new Scanner(System.in)) {
 					BufferedWriter bw = new BufferedWriter(new FileWriter(filepathquestions,true));
 				    
 				    for(int i=0;i<numOfQuestions;i++) {
+				    
 				    	  bw.write(questions.get(i));
+				    		bw.write("\n");
 				    	  
 				    }
 				   
@@ -208,6 +210,7 @@ try (Scanner input = new Scanner(System.in)) {
 				    
 				    for(int i=0;i<numOfQuestions;i++) {
 				    	  bw.write(answers.get(i));
+				    		bw.write("\n");
 				    	  
 				    }
 				   
@@ -289,11 +292,13 @@ try{
 	BufferedReader br = new BufferedReader(new FileReader(filepathanswers));
 
 for(int i=0;i<10;i++) {
+ 
 	 answersRead.add(i,br.readLine());
   }
+
 br.close();
 }catch (Exception e1) {
-   return ;
+	return ;
 
 }
 
@@ -318,15 +323,15 @@ int seed=(int) Math.random();
    }
    
 if (correct_counter>=5) 
-	   System.out.println("you passed this exam ");
+	   System.out.println("you passed this exam\n ");
 else 
-	System.out.println("you failed this exam "+"\nyou got only "+correct_counter );
+	System.out.println("you failed this exam \n"+"\nyou got only "+correct_counter );
 	for(int i=0;i<10;i++) {
 	
-		System.out.println("the question is \n"+questionsRead.get(i));
+		System.out.println("the question is \n\n"+questionsRead.get(i));
 
 	
-		System.out.println("the correct answer is \n"+answersRead.get(i));
+		System.out.println("the correct answer is \n\n"+answersRead.get(i));
 
 
 }
