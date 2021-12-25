@@ -315,6 +315,7 @@ int seed=(int) Math.random();
     		System.out.println("Enter the answer for the question ");
     
     		String answer_std=input.nextLine();
+    		answer_std.trim();
     
     if(answersRead.get(i).equalsIgnoreCase(answer_std)) {
     	correct_counter++;
