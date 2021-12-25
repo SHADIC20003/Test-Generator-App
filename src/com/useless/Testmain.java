@@ -144,15 +144,6 @@ public static void Exam(String filepath) {
 }*/
 
 
-
-
-
-
-
-
-
-package project3;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -163,15 +154,21 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Testmain {
-	 private static final String filepathquestions="C:\\Users\\ahmed alaa\\Desktop\\project\\questions.txt";
-	 private static final String filepathanswers="C:\\Users\\ahmed alaa\\Desktop\\project\\answers.txt";
+class Main {
+
+	 private static final String filepathquestions="questions.txt";
+	 private static final String filepathanswers="answers.txt";
 	
 	public static void main(String[] args) {
-		
-	
-try (Scanner input = new Scanner(System.in)) {
-			
+
+
+			WorkingWithFiles Math = new WorkingWithFiles("MathQuestions.txt","MathAnswers.txt");
+			WorkingWithFiles Science  = new WorkingWithFiles("ScienceQuestions.txt","ScienceAnswers.txt");
+			WorkingWithFiles History = new WorkingWithFiles("HistoryQuestions.txt","HistoryAnswers.txt");
+
+
+			try (Scanner input = new Scanner(System.in)) {
+
 			System.out.println("press 1 if you want to create a test bank or add questions ");
 			System.out.println("press 2 to take a test ");
 			
@@ -186,44 +183,19 @@ try (Scanner input = new Scanner(System.in)) {
 				int numOfQuestions=input.nextInt();
 			//	Index_Counter index = new Index_Counter(numOfQuestions);
 				fillArrayList_TestBank( questions,answers,numOfQuestions);
-				  
-				try{
-					
-					BufferedWriter bw = new BufferedWriter(new FileWriter(filepathquestions,true));
-				    
-				    for(int i=0;i<numOfQuestions;i++) {
-				    
-				    	  bw.write(questions.get(i));
-				    		bw.write("\n");
-				    	  
-				    }
-				   
-				    bw.close();
+			System.out.println("Which topic do you want to talk about");
+			System.out.println("press 1 for Math");
+			System.out.println("press 2 for Science");
+			System.out.println("press 3 for History");
 
-				}catch (Exception e1) {
-					return ;
+			//int ChoosingTopic = input.nextInt();
+				  WorkingWithFiles.inputting(questions,answers,filepathquestions,filepathanswers,numOfQuestions);
+
 
 				}
-			try{
-			
-					BufferedWriter bw = new BufferedWriter(new FileWriter(filepathanswers,true));
-				    
-				    for(int i=0;i<numOfQuestions;i++) {
-				    	  bw.write(answers.get(i));
-				    		bw.write("\n");
-				    	  
-				    }
-				   
-				    bw.close();
-
-				}catch (Exception e1) {
-					return ;
-
-				}
-				
+		else if (x==2)  {
+			WorkingWithFiles.Exam(filepathquestions,filepathanswers);
 		}
-		else if (x==2)  
-			Exam(filepathquestions,filepathanswers);
 			else 
 		System.out.println(" wrong number ");
 
@@ -263,78 +235,5 @@ try (Scanner input = new Scanner(System.in)) {
 }//scanner of function fill array
 }//function fill array
 
-public static void Exam(String filepathquestions,String filepathanswers) {
-	
-	
-	@SuppressWarnings("resource")
 
-		Scanner input=new Scanner (System.in);
-
-		ArrayList<String> questionsRead = new ArrayList<>();
-		ArrayList<String> answersRead = new ArrayList<>();
-
-try{
-   
-		BufferedReader br = new BufferedReader(new FileReader(filepathquestions));
-  
-	for(int i=0;i<10;i++) {
-		
-	    questionsRead.add(i,br.readLine());
-	    
-	  }
-	br.close();
-}catch (Exception e1) {
-	return ;
-
-	}
-try{
-	   
-	BufferedReader br = new BufferedReader(new FileReader(filepathanswers));
-
-for(int i=0;i<10;i++) {
- 
-	 answersRead.add(i,br.readLine());
-  }
-
-br.close();
-}catch (Exception e1) {
-	return ;
-
-}
-
-int seed=(int) Math.random();
-   
-	Collections.shuffle( questionsRead,new Random(seed));
-    Collections.shuffle( answersRead,new Random(seed));
-   
-    int correct_counter=0;
-   
-    for(int i =0;i<10;i++) {
-    
-    		System.out.println(questionsRead.get(i));
-    		System.out.println("Enter the answer for the question ");
-    
-    		String answer_std=input.nextLine();
-    
-    if(answersRead.get(i).equalsIgnoreCase(answer_std)) {
-    	correct_counter++;
-    }
-    
-   }
-   
-if (correct_counter>=5) 
-	   System.out.println("you passed this exam\n ");
-else 
-	System.out.println("you failed this exam \n"+"\nyou got only "+correct_counter );
-	for(int i=0;i<10;i++) {
-	
-		System.out.println("the question is \n\n"+questionsRead.get(i));
-
-	
-		System.out.println("the correct answer is \n\n"+answersRead.get(i));
-
-
-}
-
-}
 }
