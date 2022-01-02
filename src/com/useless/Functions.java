@@ -1,5 +1,5 @@
 
-package project3;
+package project4;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,8 +13,8 @@ import java.util.Scanner;
 
 public class Functions {
 
-	static String FilePathPass=("Number of tests.txt");
-	static String FilePathFail=("Number of tests.txt");
+	static String FilePathPass=("Number of passes.txt");
+	static String FilePathFail=("Number of fails.txt");
      
 
 
@@ -31,6 +31,7 @@ public class Functions {
 					System.out.println("press enter to type the answer");
 					
 					question=input.nextLine();
+					question.trim();
 					
 					questions.add(i,question);
 					System.out.println("enter the answer of the question "+(i+1));
@@ -38,13 +39,9 @@ public class Functions {
 					
 					
 					answer=input.nextLine();
-					
+					answer.trim();
 					answers.add(i,answer);
-					//then read till != that keyword  
 					
-					
-					//saveTofile( filepath,questions.get(i),true);
-					//objectIO.WriteObjectToFile(question.indent(i));
 					
 				}//for loop
 			
@@ -52,7 +49,7 @@ public class Functions {
 		}//function fill array
 	
 	
-public static void copy_arraylist_to_files(ArrayList<String> questions,ArrayList<String> answers,int num_of_question,String filepathquestions,String filepathanswers) {
+public static void copy_arraylist_to_files_append(ArrayList<String> questions,ArrayList<String> answers,int num_of_question,String filepathquestions,String filepathanswers) {
 	
 	try{
 		
@@ -74,6 +71,42 @@ public static void copy_arraylist_to_files(ArrayList<String> questions,ArrayList
 try{
 
 		BufferedWriter bw = new BufferedWriter(new FileWriter(filepathanswers,true));
+	    
+	    for(int i=0;i<num_of_question;i++) {
+	    	  bw.write(answers.get(i));
+	    		bw.write("\n");
+	    	  
+	    }
+	   
+	    bw.close();
+
+	}catch (Exception e1) {
+		return ;
+
+	}
+}
+public static void copy_arraylist_to_files_overwrite(ArrayList<String> questions,ArrayList<String> answers,int num_of_question,String filepathquestions,String filepathanswers) {
+	
+	try{
+		
+		BufferedWriter bw = new BufferedWriter(new FileWriter(filepathquestions));
+	    
+	    for(int i=0;i<num_of_question;i++) {
+	    
+	    	  bw.write(questions.get(i));
+	    		bw.write("\n");
+	    	  
+	    }
+	   
+	    bw.close();
+
+	}catch (Exception e1) {
+		return ;
+
+	}
+try{
+
+		BufferedWriter bw = new BufferedWriter(new FileWriter(filepathanswers));
 	    
 	    for(int i=0;i<num_of_question;i++) {
 	    	  bw.write(answers.get(i));
@@ -128,12 +161,13 @@ try{
 
 	}
 	if(num_of_question<10) {
-		int seed=(int) Math.random();
+		System.out.println("their are less than 10 questions ");  
+		int seed = (int)Math.floor(Math.random()*(100-50+1)+50);
 		   
         Collections.shuffle( questionsRead,new Random(seed));
     Collections.shuffle( answersRead,new Random(seed));
    
-    int correct_counter=0;
+    double correct_counter=0;
  
    
   for(int i =0;i<num_of_question;i++) {
@@ -150,13 +184,14 @@ try{
     
    }
    
-if (correct_counter>=5) {
+if (correct_counter>=(double)(num_of_question/2)) {
 	   System.out.println("you passed this exam\n ");
 passCounter+=1;
 	Write_Counters(passCounter,FilePathPass);
 }
 else { 
 	System.out.println("you failed this exam \n"+"\nyou got only "+correct_counter );
+	
 	failCounter+=1;
 	Write_Counters(failCounter,FilePathFail);
 	
@@ -171,11 +206,11 @@ else {
 		
 
 }
-	System.out.println("number of passes are"+Read_Counters(FilePathPass));
-	System.out.println("number of fails are"+Read_Counters(FilePathFail));
+	System.out.println("number of passes are  "+Read_Counters(FilePathPass));
+	System.out.println("number of fails are  "+Read_Counters(FilePathFail));
 	}
 else {
-	int seed=(int) Math.random();
+	int seed = (int)Math.floor(Math.random()*(100-50+1)+50);
 	   
             Collections.shuffle( questionsRead,new Random(seed));
 	    Collections.shuffle( answersRead,new Random(seed));
@@ -218,8 +253,8 @@ else {
 			
 
 	}
-		System.out.println("number of passes are"+Read_Counters(FilePathPass));
-		System.out.println("number of fails are"+Read_Counters(FilePathFail));
+		System.out.println("number of passes are  "+Read_Counters(FilePathPass));
+		System.out.println("number of fails are  "+Read_Counters(FilePathFail));
 	}
 }
 	public static void Write_Counters(int count,String FilePath) {

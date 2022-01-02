@@ -1,4 +1,4 @@
-package project3;
+package project4;
 
 
 import java.io.BufferedReader;
@@ -9,13 +9,15 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+
+
 public class Testmain {
 	
 	public static void main(String[] args) {
 		
-String FilePathTests=("Number of tests.txt");
-String FilePathQuestions=("number of Questions");
-		int number_of_tests=Functions.Read_Counters(FilePathTests);
+		String filepathquestionscounter="questions counter.txt";
+		String filepathtestscounter="tests counter.txt";
+		int testscounter=Functions.Read_Counters(filepathtestscounter);
 		
 		
 	int y,z;
@@ -25,93 +27,84 @@ String FilePathQuestions=("number of Questions");
 			WorkingWithFiles History = new WorkingWithFiles("HistoryQuestions.txt","HistoryAnswers.txt");
 
 	
-                       System.out.println("press 1 if you want to create a test bank or add questions ");
-                        System.out.println("press 2 to take a test ");
+                       System.out.println("press 11 if you want to create a test bank or add questions for Maths");
+                       System.out.println("press 12 if you want to create a test bank or add questions for Science");
+                       System.out.println("press 13 if you want to create a test bank or add questions for History");
+                        System.out.println("press 21 to take a Maths test ");
+                        System.out.println("press 22 to take a Science test ");
+                        System.out.println("press 23 to take a History test ");
                         
 			int x=input.nextInt();
 			
 			
-			
-		
-			
+			ArrayList<String> questions = new ArrayList<>();
+            ArrayList<String> answers = new ArrayList<>();
+            int numofquestions;
+ 			int questionscounter;
              switch (x) {
-                 case 1:
-                      ArrayList<String> questions = new ArrayList<>();
-                      ArrayList<String> answers = new ArrayList<>();
-                      System.out.println("how many questions you want to add");
-                      int numOfQuestions=Functions.Read_Counters(FilePathQuestions);
-                      numOfQuestions+=input.nextInt();
-                      Functions.Write_Counters(numOfQuestions,FilePathQuestions);
-                      
-                      Functions.fillArrayList_TestBank( questions,answers,Functions.Read_Counters(FilePathQuestions));
-                        
-                      System.out.println("you have three subjects to choose from them \n");
-			System.out.println("press 1 for Maths\n");
-                        System.out.println("press 2 for Science \n");
-                        System.out.println("press 3 for History \n");
-                         
-                       
-                        y=input.nextInt();
-                               switch(y){
-                                   case 1:
-                                   Functions.copy_arraylist_to_files(questions,answers, Functions.Read_Counters(FilePathQuestions),Math.getFilepathQ(),Math.getFilepathA());
-                               break;    
+                 case 11:
+                     
+                	 System.out.println("how many questions will you enter ");
+         			numofquestions=input.nextInt();
+         			questionscounter=Functions.Read_Counters(filepathquestionscounter);
+         			questionscounter+=numofquestions;
+         			Functions.Write_Counters(questionscounter, filepathquestionscounter);
+         			Functions.fillArrayList_TestBank(questions, answers, numofquestions);
+         		
+         			Functions.copy_arraylist_to_files_append(questions,answers, numofquestions,Math.getFilepathQ(),Math.getFilepathA());
+                         break;    
                               
-                                   case 2:
-                                    Functions.copy_arraylist_to_files(questions,answers, Functions.Read_Counters(FilePathQuestions),Math.getFilepathQ(),Science.getFilepathA());
-                               break;
+                     case 12:
+                    	 System.out.println("how many questions will you enter ");
+              			numofquestions=input.nextInt();
+              			questionscounter=Functions.Read_Counters(filepathquestionscounter);
+              			questionscounter+=numofquestions;
+              			Functions.Write_Counters(questionscounter, filepathquestionscounter);
+              			Functions.fillArrayList_TestBank(questions, answers, numofquestions);
+                       Functions.copy_arraylist_to_files_append(questions,answers,numofquestions ,Science.getFilepathQ(),Science.getFilepathA());
+                       break;
                                
-                                   case 3:
-                                    Functions.copy_arraylist_to_files(questions,answers, Functions.Read_Counters(FilePathQuestions),History.getFilepathQ(),History.getFilepathA());
+                     case 13:
+                    	 System.out.println("how many questions will you enter ");
+               			numofquestions=input.nextInt();
+               			questionscounter=Functions.Read_Counters(filepathquestionscounter);
+               			questionscounter+=numofquestions;
+               			Functions.Write_Counters(questionscounter, filepathquestionscounter);
+               			Functions.fillArrayList_TestBank(questions, answers, numofquestions);
+                        Functions.copy_arraylist_to_files_append(questions,answers,numofquestions,History.getFilepathQ(),History.getFilepathA());
                               break;
                                
-                                   default:
-                                    System.out.println("wrong number");
-                              break;
-                               }
+                                 
                    
-                     break;
-                 case 2:
-                	 
-                	 number_of_tests+=1;
-                	 
-                	 Functions.Write_Counters( number_of_tests, FilePathTests);
-                	 
-                      
-                        System.out.println("you have three subjects to choose from them \n");
-			System.out.println("press 1 for Maths\n");
-                        System.out.println("press 2 for Science \n");
-                        System.out.println("press 3 for History \n");
-                         
-                        z=input.nextInt();
-                        
                     
-                               switch(z){
-                                   case 1:
-                                	  
-                                       Functions.Exam(Math.getFilepathQ(), Math.getFilepathA(),Functions.Read_Counters(FilePathQuestions));
-                                       System.out.println("number of tests taken are"+Functions.Read_Counters(FilePathTests));
+                 case 21:
+                	
+                	 testscounter++;
+         			Functions.Write_Counters(testscounter, filepathtestscounter);
+                	 Functions.Exam(Math.getFilepathQ(), Math.getFilepathA(),Functions.Read_Counters(filepathquestionscounter));
+                	 System.out.println("number of exams taken is "+Functions.Read_Counters(filepathtestscounter));
                                    break;
                                   
-                                   case 2:
-                                        Functions.Exam(Science.getFilepathQ(), Science.getFilepathA(),Functions.Read_Counters(FilePathQuestions));
-                                        System.out.println("number of tests taken are"+Functions.Read_Counters(FilePathTests));
+                  case 22:
+                	 
+                	  testscounter++;
+           			Functions.Write_Counters(testscounter, filepathtestscounter);
+                  	 Functions.Exam(Science.getFilepathQ(), Science.getFilepathA(),Functions.Read_Counters(filepathquestionscounter));
+                  	 System.out.println("number of exams taken is "+Functions.Read_Counters(filepathtestscounter));
                                    break;
                                    
-                                   case 3:
-                                        Functions.Exam(History.getFilepathQ(), History.getFilepathA(),Functions.Read_Counters(FilePathQuestions));
-                                        System.out.println("number of tests taken are"+Functions.Read_Counters(FilePathTests));
+                  case 23:
+                	
+                	  testscounter++;
+           			Functions.Write_Counters(testscounter, filepathtestscounter);
+                  	 Functions.Exam(Science.getFilepathQ(), Science.getFilepathA(),Functions.Read_Counters(filepathquestionscounter));
+                  	 System.out.println("number of exams taken is "+Functions.Read_Counters(filepathtestscounter));
                                    break;
                                    
                                    default:
                                        System.out.println("wrong number");
                                        break;
-                               }
-                  break;   
-                 default:
-                     System.out.println(" wrong number ");
-                     break;
-                     
+               
                    
              }
             
