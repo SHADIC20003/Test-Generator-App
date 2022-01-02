@@ -1,4 +1,4 @@
-package project4;
+
 
 
 import java.io.BufferedReader;
@@ -97,7 +97,7 @@ public class Testmain {
                 	
                 	  testscounter++;
            			Functions.Write_Counters(testscounter, filepathtestscounter);
-                  	 Functions.Exam(Science.getFilepathQ(), Science.getFilepathA(),Functions.Read_Counters(filepathquestionscounter));
+                  	 Functions.Exam(History.getFilepathQ(), History.getFilepathA(),Functions.Read_Counters(filepathquestionscounter));
                   	 System.out.println("number of exams taken is "+Functions.Read_Counters(filepathtestscounter));
                                    break;
                                    
