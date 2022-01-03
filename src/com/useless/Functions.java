@@ -1,5 +1,5 @@
 
-
+package project4;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -159,10 +159,11 @@ try{
 	}catch (Exception e1) {
 		return ;
 
-	}
+	}	
+	
 	if(num_of_question<10) {
 		System.out.println("their are less than 10 questions ");  
-		int seed = (int)Math.floor(Math.random()*(100-50+1)+50);
+		/*int seed = (int)Math.floor(Math.random()*(100-50+1)+50);
 		   
         Collections.shuffle( questionsRead,new Random(seed));
     Collections.shuffle( answersRead,new Random(seed));
@@ -207,7 +208,8 @@ else {
 
 }
 	System.out.println("number of passes are  "+Read_Counters(FilePathPass));
-	System.out.println("number of fails are  "+Read_Counters(FilePathFail));
+	System.out.println("number of fails are  "+Read_Counters(FilePathFail));*/
+		System.exit(1);
 	}
 else {
 	int seed = (int)Math.floor(Math.random()*(100-50+1)+50);
@@ -260,7 +262,7 @@ else {
 	public static void Write_Counters(int count,String FilePath) {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(FilePath));
-			bw.write(count++);
+			bw.write(count);
 			bw.close();
 		}catch(Exception e){
 			return ;
@@ -279,8 +281,31 @@ else {
 		}
 		return count;
 		}
+	public static void Write_time(double count,String FilePath) {
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(FilePath));
+			
 
-
+			//Double.parseDouble(String s);
+			bw.write(String.valueOf(count));
+			bw.close();
+		}catch(Exception e){
+			return ;
+		}
+	}
+		
+	public static double Read_time(String FilePath) {
+			String count=null;
+			try {
+			BufferedReader br=new BufferedReader(new FileReader(FilePath)) ;
+				count = br.readLine();
+				br.close();
+			
+		}catch(Exception e) {
+		System.out.println("");
+		}
+		return Double.parseDouble(count);
+		}
 	
 }
 
