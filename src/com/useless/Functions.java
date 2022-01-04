@@ -13,8 +13,8 @@ import java.util.Scanner;
 
 public class Functions {
 
-	static String FilePathPass=("Number of passes.txt");
-	static String FilePathFail=("Number of fails.txt");
+	public static String FilePathPass=("Number of passes.txt");
+	public static String FilePathFail=("Number of fails.txt");
      
 
 
@@ -214,7 +214,7 @@ else {
 else {
 	int seed = (int)Math.floor(Math.random()*(100-50+1)+50);
 	   
-            Collections.shuffle( questionsRead,new Random(seed));
+        Collections.shuffle( questionsRead,new Random(seed));
 	    Collections.shuffle( answersRead,new Random(seed));
 	   
 	    int correct_counter=0;
@@ -281,31 +281,7 @@ else {
 		}
 		return count;
 		}
-	public static void Write_time(double count,String FilePath) {
-		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(FilePath));
-			
-
-			//Double.parseDouble(String s);
-			bw.write(String.valueOf(count));
-			bw.close();
-		}catch(Exception e){
-			return ;
-		}
-	}
-		
-	public static double Read_time(String FilePath) {
-			String count=null;
-			try {
-			BufferedReader br=new BufferedReader(new FileReader(FilePath)) ;
-				count = br.readLine();
-				br.close();
-			
-		}catch(Exception e) {
-		System.out.println("");
-		}
-		return Double.parseDouble(count);
-		}
+	
 	
 }
 

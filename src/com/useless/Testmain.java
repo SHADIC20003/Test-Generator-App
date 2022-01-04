@@ -18,6 +18,7 @@ public class Testmain {
            System.out.println("press 21 to take a Maths test ");
            System.out.println("press 22 to take a Science test ");
            System.out.println("press 23 to take a History test ");
+           System.out.println("press 7 to print a report for all subjects  ");
            
 		
 		String filepathquestionscountermaths="questions counter maths.txt";
@@ -27,13 +28,14 @@ public class Testmain {
 		String filepathtestscountermaths="tests counter maths.txt";
 		String filepathtestscounterscience="tests counter science.txt";
 		String filepathtestscounterhistory="tests counter history.txt";
-		String Averagetime="Average time.txt";
+		String totaltime="Total time.txt";
 		
 		 int testscounter=Functions.Read_Counters(filepathtestscounter);
 		 int mathstests=Functions.Read_Counters(filepathtestscountermaths);
 		 int sciencetests=Functions.Read_Counters(filepathtestscounterscience);
 		 int historytests=Functions.Read_Counters(filepathtestscounterhistory);
-		
+		  int totalseconds=0;
+		  double averagetime=0;
 		
 	int y,z;
 			Scanner input = new Scanner(System.in);
@@ -99,6 +101,11 @@ public class Testmain {
                 	 Functions.Exam(Math.getFilepathQ(), Math.getFilepathA(),Functions.Read_Counters(filepathquestionscountermaths));
                          stopwatch.stop();
                     	 stopwatch.elapsed();
+                    	  totalseconds=Functions.Read_Counters(totaltime);
+                     	  totalseconds += stopwatch.elapsedtimeinseconds();
+                     	  Functions.Write_Counters(totalseconds,totaltime);
+                     	  averagetime= (double)(Functions.Read_Counters(totaltime)/Functions.Read_Counters(filepathtestscounter));
+                       System.out.println("average time for maths test is "+averagetime);
                          System.out.println("The time taken to complete the current test is\n");
                          System.out.println(stopwatch.toString());
                 	 System.out.println("total number of exams taken is "+Functions.Read_Counters(filepathtestscounter));
@@ -118,6 +125,12 @@ public class Testmain {
                   	 Functions.Exam(Science.getFilepathQ(), Science.getFilepathA(),Functions.Read_Counters(filepathquestionscounterscience));
                           stopwatch.stop();
                           stopwatch.elapsed();
+                           totalseconds=Functions.Read_Counters(totaltime);
+                     	  totalseconds += stopwatch.elapsedtimeinseconds();
+                     	  Functions.Write_Counters(totalseconds,totaltime);
+                     	  averagetime= (double)(Functions.Read_Counters(totaltime)/Functions.Read_Counters(filepathtestscounter));
+                       System.out.println("average time for scinece test is "+averagetime);
+                       
                          System.out.println("The time taken to complete the current test is\n");
                          System.out.println(stopwatch.toString());
                   	 System.out.println("total number of exams taken is "+Functions.Read_Counters(filepathtestscounter));
@@ -137,13 +150,12 @@ public class Testmain {
                   	 Functions.Exam(History.getFilepathQ(), History.getFilepathA(),Functions.Read_Counters(filepathquestionscounterhistory));
                            stopwatch.stop();
                      	  stopwatch.elapsed();
-                      /*  double  totaltime = Functions.Read_time(Averagetime);
-                        
-                        totaltime+= stopwatch.elapsed();
-                        Functions.Write_time(totaltime,Averagetime);
-                       double averagetime=(Functions.Read_time(Averagetime)/Functions.Read_Counters(filepathtestscounterhistory));
-                       
-                       System.out.println("average time for history test is "+averagetime);*/
+               
+                     	  totalseconds=Functions.Read_Counters(totaltime);
+                     	  totalseconds += stopwatch.elapsedtimeinseconds();
+                     	  Functions.Write_Counters(totalseconds,totaltime);
+                     	  averagetime= (double)(Functions.Read_Counters(totaltime)/Functions.Read_Counters(filepathtestscounter));
+                       System.out.println("average time for history test is "+averagetime);
                          System.out.println("The time taken to complete the current test is\n");
                          System.out.println(stopwatch.toString());
                   	 System.out.println("Total number of exams taken is "+Functions.Read_Counters(filepathtestscounter));
@@ -151,6 +163,22 @@ public class Testmain {
                   
                                    break;
                                    
+                  case 7:  
+                	  
+                	  int totalfails = Functions.Read_Counters( Functions.FilePathFail);
+                	  int totalpasses= Functions.Read_Counters( Functions.FilePathPass);
+                	   averagetime= (double)(Functions.Read_Counters(totaltime)/Functions.Read_Counters(filepathtestscounter));
+                	  int numberofexamsmaths = Functions.Read_Counters(  filepathtestscountermaths);
+                	  int numberofexamsscience = Functions.Read_Counters( filepathtestscounterscience);
+                	  int numberofexamshistory = Functions.Read_Counters(filepathtestscounterhistory);
+                	  System.out.println(" total fails = "+totalfails);
+                	  System.out.println(" total passes = "+totalpasses);
+                	  System.out.println(" averagetime = "+averagetime);
+                	  System.out.println(" number of maths   exams = "+numberofexamsmaths);
+                	  System.out.println(" number of science exams = "+numberofexamsscience);
+                	  System.out.println(" number of history exams  = "+numberofexamshistory);
+                	  
+                	  break;           
                                    default:
                                        System.out.println("wrong number");
                                        break;

@@ -1,14 +1,11 @@
-
-
-/**
- * A simple java stopwatch
- */
+package project4;
 public class StopWatch {
     private long startTime;
     private long stopTime = -1;
      private static long Ttime;
      private static int Number_of_times=0;
      private long Average;
+     
     /**
      * Starts the timer
      */
@@ -48,13 +45,22 @@ public class StopWatch {
         if (stopTime >= 0)
         {
             Totalelapsedtime(startTime,stopTime);
-            return stopTime - startTime;
+           
+            return (stopTime - startTime);
+            
         }
         else
         {
-          Totalelapsedtime(startTime,stopTime);
+        	Totalelapsedtime(startTime,stopTime);
+        	 
         return System.currentTimeMillis() - startTime;
         }
+    }
+    public  int elapsedtimeinseconds()
+    {
+        long second = elapsed();
+        int seconds = (int) (second / 1000) % 60 ;
+        return seconds;
     }
 
     /**
@@ -80,5 +86,5 @@ public class StopWatch {
         int hours   = (int) ((milliseconds / (1000*60*60)) % 24);
         int millis  = (int) (milliseconds - (seconds * 1000) - (minutes * 1000 * 60) - (hours * 1000 * 60 * 60));
         return String.format("%dh, %dmin, %ds, %dms", hours, minutes, seconds, millis);
-    }
+   }
 }
